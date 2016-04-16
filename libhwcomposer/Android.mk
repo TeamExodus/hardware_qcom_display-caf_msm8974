@@ -21,6 +21,12 @@ ifeq ($(GET_DISPLAY_SECURE_STATUS_FROM_HWC),true)
     LOCAL_CFLAGS += -DGET_DISPLAY_SECURE_STATUS_FROM_HWC
 endif
 
+ifneq ($(BONE_STOCK),true)
+  ifeq ($(TARGET_BUILD_VARIANT),userdebug debug)
+    LOCAL_CFLAGS += -D_DISABLE_RUNTIME_DEBUGGING
+  endif
+endif
+
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 LOCAL_SRC_FILES               := hwc.cpp          \
                                  hwc_utils.cpp    \
