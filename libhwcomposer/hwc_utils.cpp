@@ -1421,7 +1421,7 @@ int hwc_sync(hwc_context_t *ctx, hwc_display_contents_1_t* list, int dpy,
 
 #ifdef _DISABLE_RUNTIME_DEBUGGING
     char property[PROPERTY_VALUE_MAX];
-    if(property_get("", property, "1") > 0) {
+    if(property_get("debug.egl.swapinterval", property, "1") > 0) {
         if(atoi(property) == 0)
             swapzero = true;
     }
