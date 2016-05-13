@@ -176,6 +176,11 @@ void AdrenoMemInfo::getAlignedWidthAndHeight(int width, int height, int format,
                 break;
             case HAL_PIXEL_FORMAT_YCbCr_420_SP:
             case HAL_PIXEL_FORMAT_YCrCb_420_SP:
+                if (LINK_adreno_get_gpu_pixel_alignment) {
+                    alignment = LINK_adreno_get_gpu_pixel_alignment();
+                }
+                aligned_w = ALIGN(width, alignment);
+                break;
             case HAL_PIXEL_FORMAT_YV12:
             case HAL_PIXEL_FORMAT_YCbCr_422_SP:
             case HAL_PIXEL_FORMAT_YCrCb_422_SP:
