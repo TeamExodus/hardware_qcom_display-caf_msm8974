@@ -100,6 +100,8 @@ AdrenoMemInfo::AdrenoMemInfo()
             ::dlsym(libadreno_utils, "compute_aligned_width_and_height");
         *(void **)&LINK_adreno_compute_padding = ::dlsym(libadreno_utils,
                                            "compute_surface_padding");
+        *(void **)&LINK_adreno_get_gpu_pixel_alignment =
+                ::dlsym(libadreno_utils, "get_gpu_pixel_alignment");
     }
 }
 
