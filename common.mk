@@ -1,13 +1,14 @@
+ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
 #Common headers
-common_includes := hardware/qcom/display/libgralloc
-common_includes += hardware/qcom/display/liboverlay
-common_includes += hardware/qcom/display/libcopybit
-common_includes += hardware/qcom/display/libqdutils
-common_includes += hardware/qcom/display/libhwcomposer
-common_includes += hardware/qcom/display/libexternal
-common_includes += hardware/qcom/display/libqservice
-common_includes += hardware/qcom/display/libvirtual
-common_includes += hardware/qcom/display/libhdmi
+common_includes := hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libgralloc
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//liboverlay
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libcopybit
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libqdutils
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libhwcomposer
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libexternal
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libqservice
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libvirtual
+common_includes += hardware/qcom/display-${TARGET_QCOM_DISPLAY_VARIANT}//libhdmi
 
 ifeq ($(TARGET_USES_POST_PROCESSING),true)
     common_flags     += -DUSES_POST_PROCESSING
@@ -62,4 +63,5 @@ ifeq ($(call is-vendor-board-platform,QCOM),true)
 # failing which, they are picked from bionic.
     common_deps += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
     kernel_includes += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+endif
 endif
